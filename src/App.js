@@ -1,67 +1,40 @@
 
 import './App.css';
-import restaurant from "./restaurant.jpg";
-//this is anyas commentgit
-function Header(props){
-  console.log(props);
-  return(
-    <header>
-      <h1>{props.name}'s Kitchen</h1>
-    </header>
-  );
-}
+//import restaurant from "./restaurant.jpg";
+import React, { useState, useEffect } from 'react';
 
-function Main(props){
-  return(
-    <section>
-      <p>We serve the most {props.adjective} food around</p>
-      <img src={restaurant} height={200} alt="retaurant pic" />
-      <ul style={{textAlign: "left"}}>
-        {props.dishes.map((dish) => (
-         <li key={dish.id}>{dish.title}</li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
-function Footer(props){
-  return (
-    <section>
-      <p>Copyright {props.year}</p>
-    </section>
-  );
-}
-
-const dishes = [
-  "Mac and Cheese",
-  "Salmon",
-  "Tofu",
-  "Veg",
-  "Minestrone",
-    "pelmeni"
-];
-
-const dishObjects = dishes.map ((dish, i) => ({id:i, title:dish}));
-
-
-dishes.map((dish) => console.log(dish));
 
 function App() {
+  const [emotion, setEmotion] = useState('happy');
+  const [secondary, setSecondary] = useState('tired');
+
+  useEffect(() =>{
+    console.log('Its ' + emotion  + ' around here!');
+  }, [emotion]);
+
+  useEffect(() =>{
+    console.log('Its ' + secondary  + ' around here!');
+  }, [secondary]);
+
+
   return (
-    <div className="App">
-      <Header 
-        name="V-bone"
-      />
-      <Main 
-        adjective="amazing"
-        dishes={dishObjects}
-      />
-      <Footer
-        year={new Date().getFullYear()} 
-      />
-    </div>
+      <>
+        <h1>Current emotion is {emotion} and {secondary}.</h1>
+        <button onClick={() => setEmotion('happy')}>
+          Happy
+        </button>
+        <button onClick={() => setEmotion('frustrated')}>
+          Frustrate
+        </button>
+        <button onClick={() => setEmotion('enthusiastic')}>
+          Enthuse
+        </button>
+        <button onClick={()=> setSecondary('crabby')}>
+          Crabbify
+        </button>
+      </>
   );
 }
 
 export default App;
+
