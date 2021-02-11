@@ -1,7 +1,7 @@
 
 import './App.css';
 import restaurant from "./restaurant.jpg";
-
+//this is anyas commentgit
 function Header(props){
   console.log(props);
   return(
@@ -38,7 +38,8 @@ const dishes = [
   "Salmon",
   "Tofu",
   "Veg",
-  "Minestrone"
+  "Minestrone",
+    "pelmeni"
 ];
 
 const dishObjects = dishes.map ((dish, i) => ({id:i, title:dish}));
