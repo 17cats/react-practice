@@ -1,37 +1,20 @@
 
 import './App.css';
 //import restaurant from "./restaurant.jpg";
-import React, { useState, useEffect } from 'react';
+import React, { useReducer } from 'react';
 
 
 function App() {
-  const [emotion, setEmotion] = useState('happy');
-  const [secondary, setSecondary] = useState('tired');
-
-  useEffect(() =>{
-    console.log('Its ' + emotion  + ' around here!');
-  }, [emotion]);
-
-  useEffect(() =>{
-    console.log('Its ' + secondary  + ' around here!');
-  }, [secondary]);
-
+  const [checked, toggle] = useReducer((checked) => !checked, false);
 
   return (
       <>
-        <h1>Current emotion is {emotion} and {secondary}.</h1>
-        <button onClick={() => setEmotion('happy')}>
-          Happy
-        </button>
-        <button onClick={() => setEmotion('frustrated')}>
-          Frustrate
-        </button>
-        <button onClick={() => setEmotion('enthusiastic')}>
-          Enthuse
-        </button>
-        <button onClick={()=> setSecondary('crabby')}>
-          Crabbify
-        </button>
+        <input
+            type={'checkbox'}
+            value={checked}
+            onChange={toggle}
+        />
+        <p>{checked ? 'the box is checked' : 'the box is unchecked'} </p>
       </>
   );
 }
