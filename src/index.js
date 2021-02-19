@@ -6,7 +6,7 @@ import App from './App';
 
 ReactDOM.render(
     <App
-       slogin="17cats"
+
     />,
   document.getElementById('root')
 );
